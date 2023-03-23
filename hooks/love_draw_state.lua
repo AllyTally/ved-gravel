@@ -4,7 +4,7 @@ if in_astate("gravel", 0) then
     local img = tileset_image(levelmetadata_get(roomx, roomy))
 
 	love.graphics.setColor(12,12,12,255)
-	love.graphics.rectangle("fill", 8, 16, love.graphics.getWidth()-136, love.graphics.getHeight()-24)
+	love.graphics.rectangle("fill", 8 + 48, 16, love.graphics.getWidth()-136 - 48 - 48, love.graphics.getHeight()-24)
 	love.graphics.setColor(255,255,255,255)
 
     love.graphics.setScissor(GRAVEL_PICKER_OFFSET_X, GRAVEL_PICKER_OFFSET_Y, GRAVEL_PICKER_OFFSET_X + tilesets[img].tiles_width * 16, love.graphics.getHeight() - 24 - 8)
@@ -32,14 +32,14 @@ if in_astate("gravel", 0) then
     love.graphics.setScissor()
 
     for i = 0, #GRAVEL_TILES - 1 do
-        local x = (GRAVEL_PICKER_OFFSET_X + tilesets[img].tiles_width * 16 + 32) + (i % 8) * 16
+        local x = (GRAVEL_PICKER_OFFSET_X + tilesets[img].tiles_width * 16 + 32) + (i % 8) * 16 + 32 - 8
         local y = GRAVEL_PICKER_OFFSET_Y + math.floor(i / 8) * 16
         love.graphics.setColor(255,255,255)
         love.graphics.draw(tilesets[img].img, tilesets[img].tiles[GRAVEL_TILES[i + 1]], x, y, 0, 2)
     end
 
     for i = 0, #GRAVEL_PREVIEW - 1 do
-        local x = (GRAVEL_PICKER_OFFSET_X + tilesets[img].tiles_width * 16 + 32) + (i % 8) * 16
+        local x = (GRAVEL_PICKER_OFFSET_X + tilesets[img].tiles_width * 16 + 32) + (i % 8) * 16 + 32 - 8
         local y = GRAVEL_PICKER_OFFSET_Y + math.floor(i / 8) * 16 + 256
         love.graphics.setColor(255,255,255)
         love.graphics.draw(tilesets[img].img, tilesets[img].tiles[GRAVEL_PREVIEW[i + 1]], x, y, 0, 2)
